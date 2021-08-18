@@ -23,7 +23,7 @@ class CustomAdapter(context: Context, list:ArrayList<ContactsContract.Data>):
         view?.findViewById<ImageView>(R.id.icon).apply{data.icon}
         view?.findViewById<TextView>(R.id.title)?.apply { text = data.title }
         view?.findViewById<TextView>(R.id.text)?.apply { text = data.text}
-
+        return view!!
     }
 }
 
