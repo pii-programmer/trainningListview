@@ -7,4 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.andoroid.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Practice.AppBarOverlay">
+
+    </com.google.andoroid.material.appbar.AppBarLayout>
+
+    <ListView
+        android:id="@+id/custom_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
