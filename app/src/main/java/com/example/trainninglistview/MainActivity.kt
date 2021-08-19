@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
+        custom_list_view.setOnClickListener {
+            
+        }
+
         // アダプターをセットする
         val adapter = CustomAdapter(this, dataList)
         custom_list_view.adapter = adapter
