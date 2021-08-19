@@ -2,7 +2,6 @@ package com.example.trainninglistview
 
 
 import android.content.Context
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class CustomAdapter(context: Context, list:ArrayList<ContactsContract.Data>):
-    ArrayAdapter<Data>(context,0,list){
+
+class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>(context,0,list){
     private lateinit var data:Data
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
@@ -33,5 +32,5 @@ class CustomAdapter(context: Context, list:ArrayList<ContactsContract.Data>):
 data class Data(
     var icon: ImageView? = null,
     var title: String? = null,
-    var text: String = null
+    var text: String? = null
 )
