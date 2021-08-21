@@ -13,7 +13,6 @@
         android:id="@+id/icon"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:src="@drawable/ice_strawberry"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView

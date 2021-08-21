@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_sub.*
 
 
 class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>(context,0,list){
@@ -21,16 +23,27 @@ class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>
 
         //一行分のデータを取得する
         data = getItem(position) as Data
-        view?.findViewById<ImageView>(R.id.icon).apply{data.icon}
+        when {
+            data.icon == "a" -> {
+                view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_strawberry)
+            }
+            data.icon == "b" -> {
+                view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_remon)
+            }
+            data.icon == "c" -> {
+                view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_choco)
+            }
+        }
         view?.findViewById<TextView>(R.id.title)?.apply { text = data.title }
         view?.findViewById<TextView>(R.id.text)?.apply { text = data.text}
         return view!!
     }
 }
 
+
 // データ型
 data class Data(
-    var icon: ImageView? = null,
+    var icon: String? = null,
     var title: String? = null,
     var text: String? = null
 )
