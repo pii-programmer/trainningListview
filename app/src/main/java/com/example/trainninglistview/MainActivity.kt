@@ -1,5 +1,6 @@
 package com.example.trainninglistview
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -7,13 +8,10 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.row_view.*
-import kotlinx.android.synthetic.main.row_view.view.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,11 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-            // カスタムアダプターに渡すリストデータ(Data)を作る
-            val dataList = arrayListOf<Data>()
+        // カスタムアダプターに渡すリストデータ(Data)を作る
+        val dataList = arrayListOf<Data>()
 
-        for (i in 0..32){
-            for (i in 0..2){
+        for (i in 0..32) {
+            for (i in 0..2) {
                 when {
                     i == 0 -> {
                         dataList.add(Data().apply {
@@ -52,25 +50,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-            // アダプターをセットする
-            val adapter = CustomAdapter(this, dataList)
-            list_view.adapter = adapter
+        // アダプターをセットする
+        val adapter = CustomAdapter(this, dataList)
+        list_view.adapter = adapter
 
 
-
-            // ListViewの行がクリックされた時のイベントリスナー
-//            list_view.setOnItemClickListener { parent, view, position, id ->
-//                val item = (view.findViewById<TextView>(android.R.id.text1)).text
-//                Toast.makeText(applicationContext, item, Toast.LENGTH_SHORT).show()
-//            }
-
-
-            // intentで送る　intentでやった方がいい
-//            list_view.setOnClickListener {
-//                val intent = Intent(this, SubActivity::class.java)
-//              intent.putExtra("USER_SELECTED_ICE", "1")
-//              startActivity(intent)
-//            }
+        // intentで送る
+        list_view.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val item = parent.getItemAtPosition(position) as String
+                val userSelectedTitle = item["title"] as String
+                val userSelectedText = item["text"] as String
+                val intent = Intent(this, SubActivity::class.java)
+                intent.putExtra("USER_SELECTED_TITLE" , userSelectedTitle)
+                intent.putExtra("USER_SELECTED_TEXT" , userSelectedText)
+                startActivity(intent)
+            }
 
     }
 }
