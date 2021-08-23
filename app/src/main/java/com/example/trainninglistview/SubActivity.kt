@@ -5,6 +5,7 @@ import android.os.PersistableBundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.row_view.view.*
 
 
 class SubActivity : AppCompatActivity(){
@@ -12,15 +13,9 @@ class SubActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub)
 
-          // intentで受け取る
-        val userSelectedIce = intent.getStringExtra("USER_SELECTED_ICE")
-        val userSelectedTitle = findViewById<TextView>(R.id.user_selected_title)
-        userSelectedTitle.text = userSelectedIce
-        val userSelectedText = findViewById<TextView>(R.id.user_selected_text)
-        userSelectedText.text = userSelectedIce
 
-//        if(userSelectedIce  == "1")  {
-//
-//            }
+        val userSelectedIceTitle = intent.getStringExtra("USER_SELECTED_TITLE")
+        findViewById<TextView>(R.id.user_selected_title).text = userSelectedIceTitle
+
     }
 }

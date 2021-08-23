@@ -55,17 +55,15 @@ class MainActivity : AppCompatActivity() {
         list_view.adapter = adapter
 
 
-        // intentで送る
-        list_view.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
-                val item = parent.getItemAtPosition(position) as String
-                val userSelectedTitle = item["title"] as String
-                val userSelectedText = item["text"] as String
-                val intent = Intent(this, SubActivity::class.java)
-                intent.putExtra("USER_SELECTED_TITLE" , userSelectedTitle)
-                intent.putExtra("USER_SELECTED_TEXT" , userSelectedText)
-                startActivity(intent)
-            }
+            list_view.onItemClickListener
+                    AdapterView.OnItemClickListener { parent, view, position, id ->
 
+                        val userSelectedTitle = title[position] as String
+
+                        val intent = Intent(this, SubActivity::class.java)
+
+                        intent.putExtra("USER_SELECTED_TITLE" , userSelectedTitle)
+                        startActivity(intent)
+                    }
     }
 }
