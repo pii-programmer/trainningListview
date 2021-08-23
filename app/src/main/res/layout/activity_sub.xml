@@ -16,6 +16,10 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"/>-->
 
+<!--
+    一旦 title だけを画面遷移させてみるので、
+    他の View は消している。
+    -->
     <TextView
         android:id="@+id/user_selected_title"
         android:layout_width="100dp"

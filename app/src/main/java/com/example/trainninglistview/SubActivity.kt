@@ -13,7 +13,7 @@ class SubActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub)
 
-
+    // title だけを Intent で受け取ってみる
         val userSelectedIceTitle = intent.getStringExtra("USER_SELECTED_TITLE")
         findViewById<TextView>(R.id.user_selected_title).text = userSelectedIceTitle
 

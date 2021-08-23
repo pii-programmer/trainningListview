@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         list_view.adapter = adapter
 
 
+        // title だけを Intent で送って画面遷移させてみる
             list_view.onItemClickListener
                     AdapterView.OnItemClickListener { parent, view, position, id ->
 
