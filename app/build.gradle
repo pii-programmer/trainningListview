@@ -23,6 +23,12 @@ android {
     }
 }
 
+repositories {
+    jcenter()
+    // artifacts are published to this repository
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

@@ -22,13 +22,13 @@ class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>
         //一行分のデータを取得する
         data = getItem(position) as Data
         when {
-            data.icon == "a" -> {
+            data.icon == "strawberry" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_strawberry)
             }
-            data.icon == "b" -> {
+            data.icon == "lemon" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_remon)
             }
-            data.icon == "c" -> {
+            data.icon == "choco" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_choco)
             }
         }

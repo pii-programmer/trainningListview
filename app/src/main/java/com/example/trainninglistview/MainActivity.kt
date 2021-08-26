@@ -1,18 +1,11 @@
 package com.example.trainninglistview
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.row_view.*
-import kotlinx.android.synthetic.main.row_view.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,54 +14,67 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // カスタムアダプターに渡すデータリスト(Data)を作るラムダ式で
+        // カスタムアダプターに渡すデータ(Data)をラムダ式で作る
         val dataList = arrayListOf<Data>()
-        for (i in 0..100){
-            dataList.add(Data().apply {
-                title = "${i}番目のタイトル"
-                text = "${i}番目のテキスト"
-                when{
-                    i %3 == 0 -> {
-                        this.icon = "a"
+            for (i in 0..100){
+                dataList.add(Data().apply {
+                    when{
+                        i %3 == 0 -> {
+                            icon = "strawberry"
+                            title = "ストロベリーアイス"
+                            text = "¥100 おすすめ"
+                        }
+                        i %2 == 0 -> {
+                            icon = "lemon"
+                            title = "レモンアイス"
+                            text = "¥200 爽やか"
+                        }
+                        else -> {
+                            icon = "choco"
+                            title = "チョコアイス"
+                            text = "¥300 濃厚チョコ"
+                        }
                     }
-                    i %2 == 0 -> {
-                        this.icon = "b"
-                    }
-                    else -> {
-                        this.icon = "c"
-                    }
-                }
-            })
-        }
+                })
+            }
 
         // アダプターをセットする
         val adapter = CustomAdapter(this, dataList)
         list_view.adapter = adapter
 
-        // リストビューのクリックリスナーの書き方： list_view.setOnItemClickListener{adapterView, , view, position, id -> ..ここに処理..}
-//
+        // リストビューのクリックリスナー
+        list_view.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this, SubActivity::class.java)
+
+            val iceCreamS = parent.getItemAtPosition(0).toString()
+            val iceCreamC = parent.getItemAtPosition(1).toString()
+            val iceCreamL = parent.getItemAtPosition(2).toString()
+
+            val state = DataState(iceCreamS, iceCreamC, iceCreamL)
+
+            intent.putExtra("ICE_CREAM", state)
+            startActivity(intent)
+        }
+
 //        list_view.setOnItemClickListener { parent, view, position, id ->
-//            parent.getItemAtPosition(dataList.title)
+//
+//            val iceCreamC = parent.getItemAtPosition(1).toString()
 //            val intent = Intent(this, SubActivity::class.java)
-//            intent.putExtra("USER_SELECTED_LIST", "a")
+//            intent.putExtra("ICE_CREAM", iceCreamC)
 //            startActivity(intent)
 //        }
 //
 //        list_view.setOnItemClickListener { parent, view, position, id ->
-//            parent.getItemAtPosition(position)
-//            val intent = Intent(this, SubActivity::class.java)
-//            intent.putExtra("USER_SELECTED_LIST", "b")
-//            startActivity(intent)
-//        }
 //
-//        list_view.setOnItemClickListener { parent, view, position, id ->
-//            parent.getItemAtPosition(position)
+//            val iceCreamL = parent.getItemAtPosition(2).toString()
 //            val intent = Intent(this, SubActivity::class.java)
-//            intent.putExtra("USER_SELECTED_LIST", "c")
+//            intent.putExtra("ICE_CREAM", iceCreamL)
 //            startActivity(intent)
 //        }
     }
 }
+
+
 
 //  トースト表示はできた
 //  Toast.makeText(applicationContext, userSelectedList.toString(), Toast.LENGTH_SHORT).show()
