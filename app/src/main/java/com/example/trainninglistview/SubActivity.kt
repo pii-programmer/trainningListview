@@ -15,33 +15,25 @@ class SubActivity : AppCompatActivity(){
 
         val state = intent.getSerializableExtra("ICE_CREAM")
         if (state is DataState){
-            when {
-                state.strawberry == "Data(icon=strawberry, title=ストロベリーアイス, text=¥100 おすすめ)" -> {
-                    ice_cream.text = "ストロベリーアイス"
-                }
-                state.choco == "Data(icon=choco, title=チョコアイス, text=¥300 濃厚チョコ)" -> {
-                    ice_cream.text = "チョコアイス"
-                }
-                state.lemon == "Data(icon=lemon, title=レモンアイス, text=¥200 爽やか)" -> {
-                    ice_cream.text = "レモンアイス"
-                }
-            }
+            ice_cream_s.setText(state.strawberry)
+            ice_cream_c.setText(state.choco)
+            ice_cream_l.setText(state.lemon)
         }
 
-//        when {
-//            iceCream == "Data(icon=strawberry, title=ストロベリーアイス, text=¥100 おすすめ)" -> {
-//                ice_cream.text = "ストロベリーアイス"
-//            }
-//            iceCream == "Data(icon=choco, title=チョコアイス, text=¥300 濃厚チョコ)" -> {
-//                ice_cream.text = "チョコアイス"
-//            }
-//            iceCream == "Data(icon=lemon, title=レモンアイス, text=¥200 爽やか)" -> {
-//                ice_cream.text = "レモンアイス"
-//            }
-//        }
     }
 }
 
+//          when {
+//                state.strawberry == "Data(icon=strawberry, title=ストロベリーアイス, text=¥100 おすすめ)" -> {
+//                    ice_cream_s.text = "ストロベリーアイス"
+//                }
+//                state.choco == "Data(icon=choco, title=チョコアイス, text=¥300 濃厚チョコ)" -> {
+//                    ice_cream_c.text = "チョコアイス"
+//                }
+//                state.lemon == "Data(icon=lemon, title=レモンアイス, text=¥200 爽やか)" -> {
+//                    ice_cream_l.text = "レモンアイス"
+//                }
+//            }
 
 
 
