@@ -26,7 +26,7 @@ class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_strawberry)
             }
             data.icon == "lemon" -> {
-                view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_remon)
+                view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_lemon)
             }
             data.icon == "choco" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_choco)

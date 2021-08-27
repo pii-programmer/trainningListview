@@ -2,6 +2,7 @@ package com.example.trainninglistview
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.AdapterView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -43,34 +44,16 @@ class MainActivity : AppCompatActivity() {
         list_view.adapter = adapter
 
         // リストビューのクリックリスナー
-        list_view.setOnItemClickListener { parent, view, position, id ->
+        list_view.setOnItemClickListener { parent: AdapterView<*>, view, position, id ->
             val intent = Intent(this, SubActivity::class.java)
 
-            val iceCreamS = parent.getItemAtPosition(0).toString()
-            val iceCreamC = parent.getItemAtPosition(1).toString()
-            val iceCreamL = parent.getItemAtPosition(2).toString()
+            val iceCream = parent.getItemAtPosition(position) as Data
 
-            val state = DataState(iceCreamS, iceCreamC, iceCreamL)
+            val state = DataState(iceCream.icon, iceCream.title, iceCream.text)
 
             intent.putExtra("ICE_CREAM", state)
             startActivity(intent)
         }
-
-//        list_view.setOnItemClickListener { parent, view, position, id ->
-//
-//            val iceCreamC = parent.getItemAtPosition(1).toString()
-//            val intent = Intent(this, SubActivity::class.java)
-//            intent.putExtra("ICE_CREAM", iceCreamC)
-//            startActivity(intent)
-//        }
-//
-//        list_view.setOnItemClickListener { parent, view, position, id ->
-//
-//            val iceCreamL = parent.getItemAtPosition(2).toString()
-//            val intent = Intent(this, SubActivity::class.java)
-//            intent.putExtra("ICE_CREAM", iceCreamL)
-//            startActivity(intent)
-//        }
     }
 }
 

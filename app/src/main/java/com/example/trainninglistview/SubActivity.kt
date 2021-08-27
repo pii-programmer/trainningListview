@@ -3,6 +3,7 @@ package com.example.trainninglistview
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.content.Intent
+import android.view.contentcapture.DataShareWriteAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_sub.*
 
@@ -15,9 +16,13 @@ class SubActivity : AppCompatActivity(){
 
         val state = intent.getSerializableExtra("ICE_CREAM")
         if (state is DataState){
-            ice_cream_s.setText(state.strawberry)
-            ice_cream_c.setText(state.choco)
-            ice_cream_l.setText(state.lemon)
+            when{
+                state.icon == "lemon" -> {
+                    iceIcon.setImageResource(R.drawable.ice_lemon)
+                    iceTitle.setText(state.title)
+                    iceText.setText(state.text)
+                }
+            }
         }
 
     }
