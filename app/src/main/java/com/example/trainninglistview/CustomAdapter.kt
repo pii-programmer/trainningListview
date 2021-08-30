@@ -19,16 +19,16 @@ class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>
             view = LayoutInflater.from(context).inflate(R.layout.row_view, parent,false)
         }
 
-        //一行分のデータを取得する
-        data = getItem(position) as Data
-        when {
-            data.icon == "strawberry" -> {
+        //一行分のデータを取得す
+        data = getItem(position) as Data    // 今回はここで data:Data の初期化が完了している
+        when (data.icon){
+            "strawberry" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_strawberry)
             }
-            data.icon == "lemon" -> {
+            "lemon" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_lemon)
             }
-            data.icon == "choco" -> {
+            "choco" -> {
                 view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_choco)
             }
         }
@@ -37,6 +37,20 @@ class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>
         return view!!
     }
 }
+
+// view?.findViewById<ImageView>(R.id.icon)?.setImageResource(R.drawable.ice_strawberry)　の ? とは null判定。
+// その値(view)が null だったら、findViewById してください　という意味。
+// findViewById<TextView>(R.id.title)が nullだったら、applyして(データ箱を全部開いて)、textにdataのタイトルを代入してください　という意味。
+
+// あまり ? は使わない方がいい。
+
+// そのために、null を回避する書き方がある ↓
+//    data?.let{
+//        it.icon: String
+//        it.title: String
+//        it.text: String
+//    }
+// 変数dataの値が null だったら、let(ここに変数を追加しますよ)。
 
 
 // データ型

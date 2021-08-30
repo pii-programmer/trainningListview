@@ -39,12 +39,15 @@ class MainActivity : AppCompatActivity() {
                 })
             }
 
+        // dataList を DBに保存し
+        // DB から data を取得し adapter にセットする
+
         // アダプターをセットする
         val adapter = CustomAdapter(this, dataList)
         list_view.adapter = adapter
 
-        // リストビューのクリックリスナー
-        list_view.setOnItemClickListener { parent: AdapterView<*>, view, position, id ->
+        // リストビューのクリックリスナ　　　　　　 // 使わない view と id は _ で伏せておく
+        list_view.setOnItemClickListener { parent: AdapterView<*>, _, position, _ ->
             val intent = Intent(this, SubActivity::class.java)
 
             val iceCream = parent.getItemAtPosition(position) as Data
@@ -53,20 +56,23 @@ class MainActivity : AppCompatActivity() {
 
             intent.putExtra("ICE_CREAM", state)
             startActivity(intent)
+
+
+            // apply 使うとこの様にも書ける
+//            Intent(this, SubActivity::class.java).apply {
+//                this.putExtra("ICE_CREAM", state)
+//                startActivity(this)
+//            }
         }
     }
 }
 
 
 
+
 //  トースト表示はできた
 //  Toast.makeText(applicationContext, userSelectedList.toString(), Toast.LENGTH_SHORT).show()
-
-//  クリックしたリストの位置を定義： val userSelectedList = parent.getItemAtPosition(position)
-
-
-
-/////////////////// メモ（スコープ関数） ////////////////////////////
+/////////////////// メモ ////////////////////////////
 //        val dataList = arrayListOf<Data>().apply {
 //            var data = Data()
 //            for (i in 0..99) {
@@ -77,11 +83,3 @@ class MainActivity : AppCompatActivity() {
 //            }
 //        }
 //        print(dataList)
-
-
-// collectionメソッドを使ってみたけど同じ画像しか出せないのでコメントアウト
-//            val icon = listOf("a", "b", "c")
-//                for(n in icon){
-//                    this.icon = n
-//                }
-
