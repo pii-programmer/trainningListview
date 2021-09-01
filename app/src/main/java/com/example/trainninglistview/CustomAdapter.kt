@@ -12,6 +12,7 @@ import android.widget.TextView
 
 class CustomAdapter(context: Context, list:ArrayList<Data>) : ArrayAdapter<Data>(context,0,list){
     private lateinit var data:Data
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         if (view == null){
